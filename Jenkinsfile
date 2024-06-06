@@ -5,6 +5,7 @@ pipeline{
       steps{
         sh "docker stop $(docker ps -aq) || true"
         sh "docker rm $(docker ps -aq) || true"
+        sh "docker network create newnetwork || true"
       }
     }
     stage("Build Docker Images"){
@@ -15,8 +16,8 @@ pipeline{
     }
     stage("Run Docker containers"){
       steps{
-        sh "docker run -d --name flask-app flask-app-image"
-        sh "docker run -d -p 80:80 --name nginx nginx-image"
+        sh "docker run -d --network newnetwork --name flask-app flask-app-image"
+        sh "docker run -d --network newnetwork -p 80:80 --name nginx nginx-image"
       }
     }
   }
