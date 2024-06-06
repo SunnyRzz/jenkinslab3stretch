@@ -11,7 +11,7 @@ pipeline{
     stage("Build Docker Images"){
       steps{
         sh "docker build -t flask-app-image ."
-        sh "docker build -t nginx-image -f Dockerfilenginx"
+        sh "docker build -t nginx-image -f Dockerfilenginx ."
       }
     }
     stage("Run Docker containers"){
