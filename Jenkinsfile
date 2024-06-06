@@ -3,8 +3,8 @@ pipeline{
   stages{
     stage("Docker Cleanup"){
       steps{
-        sh "docker stop $(docker ps -aq) || true"
-        sh "docker rm $(docker ps -aq) || true"
+        sh "docker stop \$(docker ps -aq) || true"
+        sh "docker rm \$(docker ps -aq) || true"
         sh "docker network create newnetwork || true"
       }
     }
