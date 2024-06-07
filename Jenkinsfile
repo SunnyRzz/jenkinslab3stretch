@@ -20,5 +20,15 @@ pipeline{
         sh "docker run -d --network newnetwork -p 80:80 --name nginx nginx-image"
       }
     }
+    stage("Run trivy security scan"){
+      steps{
+        sh "trivy fs ."
+      }
+    }
+    stage("Run unit tests"){
+      steps{
+        sh "python test.py"
+      }
+    }
   }
 }
