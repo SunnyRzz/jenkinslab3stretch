@@ -31,4 +31,9 @@ pipeline{
       }
     }
   }
+  post{
+    always{
+      archiveArtifacts artifacts: 'scanresults.json', allowEmptyArchive: true
+    }
+  }
 }
