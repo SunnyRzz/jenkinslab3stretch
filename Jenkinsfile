@@ -22,7 +22,7 @@ pipeline{
     }
     stage("Run trivy security scan"){
       steps{
-        sh "trivy fs -f json -o scanresults.json"
+        sh "trivy fs -f json -o scanresults.json ."
       }
     }
     stage("Run unit tests"){
