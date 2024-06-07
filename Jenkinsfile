@@ -22,7 +22,7 @@ pipeline{
     }
     stage("Run trivy security scan"){
       steps{
-        sh "trivy fs ."
+        sh "trivy fs . > scanresults.txt"
       }
     }
     stage("Run unit tests"){
